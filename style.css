@@ -1,0 +1,42 @@
+body{
+    text-align: center;
+    color: white;
+    background-color: darkslategray;
+    font-size: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h3 {
+    text-align: justify;
+}
+
+button {
+    background-color: rgb(114, 127, 170);
+    color: white;
+    height: 50px;
+    width: 200px;
+}
+
+.align {
+    margin-right:auto;
+    margin-left:auto;
+    width: 8em;
+}
+
+table, th, td {
+    width: 50%;
+    border: 1px solid;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.container {
+    text-align: center;
+}
+
+img {
+    margin-bottom: 10px;
+}
+

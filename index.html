@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function initialize() {
+            grocery = document.getElementById("grocery");
+            num = document.getElementById("foodNum");
+            items = ["Chicken", "Beef", "Tomatoes"];
+            display();
+        }
+
+        function display() {
+            grocery.innerHTML = "1. " + items[0];
+            for (let i = 1; i < items.length; i++) 
+            {
+                grocery.innerHTML += "<br/>" + (i + 1) + ". " + items[i];
+            }
+        }
+
+        function addItem() {
+            if (!items.includes(num.value)) 
+            {
+                items.push(num.value);
+                display();
+            }
+            else
+            {
+                alert("That is a duplicate!");
+            }
+        }
+
+        function removeItem() {
+            //console.log(num.value);
+            for (let i = 0; i < items.length; i++)
+            {
+                if (items[i] === num.value)
+                {
+                    items.splice(i, 1);
+                }
+            }
+            display();
+        }
+
+        function moveItemUp() {
+            let old = parseInt(num.value);
+            let newIndex = old - 1;
+            if (newIndex > -1) 
+            {
+                items.splice(newIndex, 0, items.splice(old, 1)[0]);
+                num.value = newIndex;
+                display();
+            }
+
+        }
+
+        function moveItemDown() {
+            let old = parseInt(num.value);
+            let newIndex = old + 1;
+            if (newIndex > items.length - 1) 
+            {
+                newIndex--;
+            }
+            items.splice(newIndex, 0, items.splice(old, 1)[0]);
+            num.value = newIndex;
+            display();
+        }
+
+    </script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Grocery List</title>
+</head>
+
+<body onload="initialize();">
+    <h1>Shop Lift Up, Inc Presents:</h1>
+    <h1>Lift-Up App</h1>
+    <img src = "logo.png" height = 300px width = 300px>
+    <p>This is a grocery list that updates with the items that you need to buy!</p>
+    <br>
+    <hr>
+    <h2>Your Current List:</h2>
+    <h3 class="align" id="grocery"></h3>
+    <button onclick="moveItemUp()">Up <img src="up.png" height=10px width=20px></button>
+    <button onclick="moveItemDown()">Down <img src="down.png" height=10px width=20px></button>
+    <br>
+    <hr>
+    <label>
+        What do you want to change? <input type="text" id="foodNum" placeholder="Enter a food name or #" />
+    </label>
+    <br>
+    <br>
+    <button onclick="addItem()">Add an Item!</button>
+    <br>
+    <br>
+    <button onclick="removeItem()">Remove an Item!</button>
+    <br>
+
+</body>
+
+</html>
